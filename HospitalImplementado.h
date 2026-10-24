@@ -22,6 +22,7 @@ public:
 
     // metodos heredados de la interfaz pura SistemaHospital
     bool leerPacientes() override;
+    void crearPaciente( std::string datos[]);
     std::string listarPacientesEspera() override;
     std::string atenderPacientes(int cantidad) override;
     std::string listarDepartamentos() override;

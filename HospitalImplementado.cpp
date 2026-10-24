@@ -62,6 +62,7 @@ Servicio* HospitalImplementado::buscarServicio(const string& nombre) {
 }
 
 // para leer el txt con un bool (lo k hiciste tu dani)
+/*
 bool HospitalImplementado::leerPacientes() {
     ifstream archivo("pacientes.txt");
     if (!archivo.is_open()) return false;
@@ -149,6 +150,47 @@ bool HospitalImplementado::leerPacientes() {
     }
     archivo.close();
     return true;
+}
+*/
+
+//voy a reescribir esta cosa fea de arriba, intentare que sea mas intuitiva
+
+bool HospitalImplementado::leerPacientes()
+{
+    ifstream archivo("pacientes.txt");
+    if (!archivo.is_open()) return false;
+    string linea;
+    while (getline(archivo, linea))
+    {
+        string datos[11];
+        int campo = 0;
+        for (char c : linea)
+        {
+            if (c == ';')
+            {
+                campo += 1;
+                continue;
+            }
+
+            if (campo > 10) {break;} //por si acaso para que no se caiga si hay mas ";"
+            datos[campo] += c;
+        }
+
+        //por aqui se debera de crear el paciente creo, hay que crear un metodo aparte.
+        if (campo == 10) //por si tenia mas para que no lo intente crear
+        {
+            HospitalImplementado::crearPaciente(datos);
+        }
+    }
+    archivo.close();
+    return true;
+}
+
+
+//En este metodo se creara al paciente y se va a verificar que todo este en orden, mañana lo hago
+void crearPaciente(string datos[])
+{
+   //por el momento estara vacio
 }
 
 // printea los pacientes en espera, es para el menú

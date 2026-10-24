@@ -242,7 +242,7 @@ void HospitalImplementado::crearPaciente(string datos[])
     //hacemos un poco de control de errores
     if (edad < 0 || dolor < 0 || dolor > 10) return;
     if (trauma != 0 && trauma != 1) return;
-    if (sintomasNeu < 0 || sintomasNeu != 1) return;
+    if (sintomasNeu != 0 && sintomasNeu != 1) return;
     if (reqCirugia != 0 && reqCirugia != 1) return;
 
     Paciente* nuevoP = new Paciente(id, nombre, edad);

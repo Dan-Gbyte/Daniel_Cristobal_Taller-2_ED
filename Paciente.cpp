@@ -17,9 +17,9 @@ void Paciente::setDatosClinicos(double temp, int presion, int dolor, std::string
                                 int trauma, int sintomasNeu, int reqCirugia, int diasHosp) {
     temperatura = temp;
     presionArterial = presion;
-    dolor = dolor;
+    this->dolor = dolor;
     tipoDolor = tDolor;
-    trauma = trauma;
+    this->trauma = trauma;
     sintomasNeurologicos = sintomasNeu;
     requiereCirugia = reqCirugia;
     diasHospitalizacion = diasHosp;

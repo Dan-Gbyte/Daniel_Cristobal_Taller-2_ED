@@ -173,6 +173,12 @@ bool HospitalImplementado::leerPacientes()
             }
 
             if (campo > 10) {break;} //por si acaso para que no se caiga si hay mas ";"
+
+            if ( c == '\r' || (c == ' ' && datos[campo] == ""))
+            {
+                continue;
+            }
+
             datos[campo] += c;
         }
 
@@ -187,10 +193,62 @@ bool HospitalImplementado::leerPacientes()
 }
 
 
-//En este metodo se creara al paciente y se va a verificar que todo este en orden, mañana lo hago
-void crearPaciente(string datos[])
+void HospitalImplementado::crearPaciente(string datos[])
 {
-   //por el momento estara vacio
+    //revisamos si hay datos vacíos
+    for (int i = 0; i < 11; i++)
+    {
+        if (datos[i] == "")
+        {
+            return; //para que no lo cree
+        }
+    }
+
+    string id = datos[0];
+    string nombre = datos[1];
+    string tDolor = datos[6];
+
+    //esto es para que no cree pacientes duplicados
+    Nodo<Paciente*>* aux = colaEspera.getFrente();
+    while (aux != nullptr)
+    {
+        if (aux->dato->getId() == id)
+        {
+            return; //paciente duplicado, asi que no lo creamos
+        }
+        aux = aux -> siguiente;
+    }
+
+    //pasamos a int
+    int edad, presion, dolor, trauma, sintomasNeu, reqCirugia, diasHosp;
+    double temp;
+
+    try
+    {
+        edad = stoi(datos[2]); //al buscar en google me aparecio ese metodo
+        temp = stod(datos[3]);
+        presion = stoi(datos[4]);
+        dolor = stoi(datos[5]);
+        trauma = stoi(datos[7]);
+        sintomasNeu = stoi(datos[8]);
+        reqCirugia = stoi(datos[9]);
+        diasHosp = stoi(datos[10]);
+    }
+    catch (...)
+    {
+        return; //si no se pudo asumo que esta mal y no se crea
+    }
+
+    //hacemos un poco de control de errores
+    if (edad < 0 || dolor < 0 || dolor > 10) return;
+    if (trauma != 0 && trauma != 1) return;
+    if (sintomasNeu < 0 || sintomasNeu != 1) return;
+    if (reqCirugia != 0 && reqCirugia != 1) return;
+
+    Paciente* nuevoP = new Paciente(id, nombre, edad);
+    nuevoP ->setDatosClinicos(temp, presion, dolor, tDolor, trauma, sintomasNeu, reqCirugia, diasHosp);
+
+    colaEspera.encolar(nuevoP);
 }
 
 // printea los pacientes en espera, es para el menú

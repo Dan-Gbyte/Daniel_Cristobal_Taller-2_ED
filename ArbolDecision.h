@@ -35,6 +35,7 @@ public:
     // aca los recorridos
     void preorden(NodoDecision* nodo);
     void inorden(NodoDecision* nodo);
+    void postorden(NodoDecision* nodo);
     NodoDecision* getRaiz() { return raiz; }
 };
 

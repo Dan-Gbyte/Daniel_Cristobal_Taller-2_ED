@@ -3,6 +3,7 @@
 //
 
 #include "ArbolDecision.h"
+#include <iostream> 
 
 ArbolDecision::ArbolDecision() {
 
@@ -98,4 +99,30 @@ std::string ArbolDecision::evaluarPaciente(Paciente* p) {
     }
 
     return "Medicina General"; // valor x defecto
+}
+
+//recorridos ---
+
+// preorden
+void ArbolDecision::preorden(NodoDecision* nodo) {
+    if (nodo == nullptr) return;
+    std::cout << "- " << nodo->preguntaOrServicio << (nodo->esServicio ? " [Servicio Final]" : " [Pregunta]") << std::endl;
+    preorden(nodo->izquierdo);
+    preorden(nodo->derecho);
+}
+
+// inorden
+void ArbolDecision::inorden(NodoDecision* nodo) {
+    if (nodo == nullptr) return;
+    inorden(nodo->izquierdo);
+    std::cout << "- " << nodo->preguntaOrServicio << (nodo->esServicio ? " [Servicio Final]" : " [Pregunta]") << std::endl;
+    inorden(nodo->derecho);
+}
+
+// postorden
+void ArbolDecision::postorden(NodoDecision* nodo) {
+    if (nodo == nullptr) return;
+    postorden(nodo->izquierdo);
+    postorden(nodo->derecho);
+    std::cout << "- " << nodo->preguntaOrServicio << (nodo->esServicio ? " [Servicio Final]" : " [Pregunta]") << std::endl;
 }

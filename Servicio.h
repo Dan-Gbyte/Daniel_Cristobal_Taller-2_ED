@@ -4,12 +4,13 @@
 #include <string>
 #include "Paciente.h"
 #include "Nodo.h"
+#include "ArbolAVL.h"
 
 // clase que representa un departamento del hospital
 class Servicio {
 private:
     std::string nombreServicio;       // nombre del depto
-    Nodo<Paciente*>* listaPacientes;  // sublista enlazada con los pacientes asignados al servicio
+    ArbolAVL arbolPacientes;
     Servicio* siguienteServicio;      // puntero al siguiente departamento de la lista
 
 public:
@@ -24,8 +25,8 @@ public:
 
     // métodos para la gestión interna de pacientes
     void agregarPaciente(Paciente* p);
-    int getCantidadPacientes() const;
-    std::string obtenerTextoPacientes() const;
+    int getCantidadPacientes();
+    std::string obtenerTextoPacientes();
 };
 
 #endif

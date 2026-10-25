@@ -3,17 +3,18 @@
 
 // constructor: configura el nombre e inicializa los punteros en el nullptr
 Servicio::Servicio(std::string nombre)
-    : nombreServicio(nombre), listaPacientes(nullptr), siguienteServicio(nullptr) {}
+    : nombreServicio(nombre), siguienteServicio(nullptr) {}
 
 // recorre la sub-lista enlazada liberando tanto los objetos "Paciente" como los Nodos / destructor
 Servicio::~Servicio() {
+    /*
     Nodo<Paciente*>* actual = listaPacientes;
     while (actual != nullptr) {
         Nodo<Paciente*>* aux = actual;
         actual = actual->siguiente;
         //delete aux->dato; // libera el objeto Paciente dinámico -> HospitalImplementado lo hace y esto intenta hacerlo 2 veces
         delete aux;       // libera el nodo de la lista
-    }
+    } */ //en teoria ya no es necesario esto
 }
 
 std::string Servicio::getNombre() const { return nombreServicio; }
@@ -23,6 +24,7 @@ void Servicio::setSiguiente(Servicio* sig) { siguienteServicio = sig; }
 // agrega un paciente al final de la sublista del depto
 
 void Servicio::agregarPaciente(Paciente* p) {
+    /*
     Nodo<Paciente*>* nuevo = new Nodo<Paciente*>(p);
     if (listaPacientes == nullptr) {
         listaPacientes = nuevo;
@@ -32,11 +34,14 @@ void Servicio::agregarPaciente(Paciente* p) {
             aux = aux->siguiente;
         }
         aux->siguiente = nuevo;
-    }
+    } */
+
+    arbolPacientes.insertar(p);
 }
 
 // para contar la cant de pacientes del depto
-int Servicio::getCantidadPacientes() const {
+int Servicio::getCantidadPacientes() {
+    /*
     int cont = 0;
     Nodo<Paciente*>* aux = listaPacientes;
     while (aux != nullptr) {
@@ -44,9 +49,13 @@ int Servicio::getCantidadPacientes() const {
         aux = aux->siguiente;
     }
     return cont;
+    */
+
+    return arbolPacientes.getCantidadPacientes();
 }
 
-std::string Servicio::obtenerTextoPacientes() const {
+std::string Servicio::obtenerTextoPacientes() {
+    /*
     if (listaPacientes == nullptr) {
         return "No hay pacientes en este servicio.\n";
     }
@@ -57,4 +66,6 @@ std::string Servicio::obtenerTextoPacientes() const {
         aux = aux->siguiente;
     }
     return resultado;
+    */
+    return arbolPacientes.obtenerTextoInorden();
 }

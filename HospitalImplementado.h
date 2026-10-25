@@ -5,10 +5,12 @@
 #include "Cola.h"
 #include "Pila.h"
 #include "Servicio.h"
+#include "ArbolDecision.h"
 
-// heresa e implementa SistemaHospital
+// hereda e implementa SistemaHospital
 class HospitalImplementado : public SistemaHospital {
 private:
+    ArbolDecision arbolDecision;
     Cola<Paciente*> colaEspera;          // Cola FIFO
     Pila<Paciente*> historialAtenciones; // Pila LIFO para el historial
     Servicio* listaServicios;           // linked list con los deptos

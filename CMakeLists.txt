@@ -15,5 +15,7 @@ add_executable(T1
         PacienteUrgencia.h
         Servicio.cpp
         Servicio.h
+        ArbolDecision.cpp
+        ArbolAVL.cpp
 )
 add_executable(new_target ArbolDecision.cpp ArbolDecision.h)

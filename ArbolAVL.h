@@ -38,6 +38,9 @@ private:
     void postordenRec(NodoAVL* nodo);
     void destruirAVL(NodoAVL* nodo);
 
+    int contarNodos(NodoAVL* nodo);
+    void textoInordenRec(NodoAVL* nodo, std::string& texto);
+
 public:
     ArbolAVL();
     ~ArbolAVL();
@@ -51,6 +54,8 @@ public:
     void mostrarPostorden();
 
     bool estaVacio();
+    int getCantidadPacientes();
+    std::string obtenerTextoInorden();
 };
 
 #endif

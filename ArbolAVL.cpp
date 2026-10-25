@@ -15,7 +15,7 @@ void ArbolAVL::destruirAVL(NodoAVL* nodo) {
     if (nodo != nullptr) {
         destruirAVL(nodo->izquierdo);
         destruirAVL(nodo->derecho);
-        delete nodo->paciente;
+        //delete nodo->paciente;
         delete nodo;
     }
 }
@@ -157,4 +157,37 @@ void ArbolAVL::mostrarPostorden() {
 
 bool ArbolAVL::estaVacio() {
     return raiz == nullptr;
+}
+
+int ArbolAVL::contarNodos(NodoAVL* nodo)
+{
+    if (nodo == nullptr) return 0;
+    return 1 + contarNodos(nodo->izquierdo) + contarNodos(nodo->derecho);
+}
+
+int ArbolAVL::getCantidadPacientes()
+{
+    return contarNodos(raiz);
+}
+
+void ArbolAVL::textoInordenRec(NodoAVL* nodo, std::string& texto)
+{
+    if (nodo != nullptr)
+    {
+        textoInordenRec(nodo->izquierdo, texto);
+        texto += nodo->paciente->getNombre() + " (" + nodo->id + ")\n";
+        textoInordenRec(nodo->derecho, texto);
+    }
+}
+
+std::string ArbolAVL::obtenerTextoInorden()
+{
+    if (raiz == nullptr)
+    {
+        return "Sin pacientes\n";
+    }
+    std::string salida = "Pacientes (Inorden):\n";
+    textoInordenRec(raiz, salida);
+    salida += "Altura AVL: " + std::to_string(obtenerAltura(raiz)) + " | Balance raiz: " + std::to_string(obtenerBalance(raiz)) + "\n";
+    return salida;
 }

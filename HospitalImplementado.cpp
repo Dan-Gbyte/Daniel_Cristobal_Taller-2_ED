@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iostream>
 
+
 using namespace std;
 
 HospitalImplementado::HospitalImplementado() : listaServicios(nullptr) {
@@ -282,6 +283,10 @@ string HospitalImplementado::atenderPacientes(int cantidad) {
 
         // desencola el paciente (FIFO)
         Paciente* p = colaEspera.desencolar();
+
+        string serv = arbolDecision.evaluarPaciente(p);
+        p->setServicio(serv);
+
         salida += "ID: " + p->getId() + "\n";
         salida += "Nombre: " + p->getNombre() + "\n";
         salida += "Edad: " + to_string(p->getEdad()) + "\n";

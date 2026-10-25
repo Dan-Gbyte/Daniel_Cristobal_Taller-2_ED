@@ -10,14 +10,14 @@ Asignatura: Estructura de Datos
 * github: Dan-Gbyte
 * RUT: 22.152.252-4
 * Carrera: ICCI
-* Paralelo: (Completar si corresponde)
+* Paralelo: (C1)
 
 **Integrante 2:**
 * Nombre: Cristóbal Isaías Espinoza Foix
 * github: cristxbai
 * RUT: 21.735.612-1
 * Carrera: ICCI
-* Paralelo: (Completar si corresponde)
+* Paralelo: (C1)
 
 ## Descripción
 Extensión del sistema de gestión de pacientes del hospital Marmaja realizado en el Taller 1 de Estructura de Datos.

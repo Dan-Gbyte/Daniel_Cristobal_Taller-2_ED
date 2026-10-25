@@ -25,7 +25,7 @@ hecho en C++.
 
 ## Instrucciones de Compilación y Ejecución
 1. Abra una terminal en la raíz del proyecto (donde se ubica el `CMakeLists.txt`).
-2. Suba el "pacientes.txt" a la carpeta raiz.
+2. Suba el `"pacientes.txt"` a la carpeta raiz.
 3. Abra la terminal y compile los archivos ejecutando: 
    cmake -B build
    cmake --build build

@@ -16,3 +16,4 @@ add_executable(T1
         Servicio.cpp
         Servicio.h
 )
+add_executable(new_target ArbolDecision.cpp ArbolDecision.h)
